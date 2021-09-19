@@ -12,7 +12,7 @@ public class Menu {
         System.out.println("ls_name_asc - 제목 순으로 정렬");
         System.out.println("ls_name_desc - 제목 역순으로 정렬");
         System.out.println("ls_date - 날짜 순으로 정");
-        System.out.println("exit - 종");
+        System.out.println("exit - 종료");
         System.out.println("help - 선택 메뉴 보이기");
     }
     
