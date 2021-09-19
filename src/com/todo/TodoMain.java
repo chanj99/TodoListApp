@@ -1,4 +1,4 @@
-package com.todo;
+ package com.todo;
 
 import java.util.Scanner;
 
@@ -13,15 +13,15 @@ public class TodoMain {
 		Scanner sc = new Scanner(System.in);
 		TodoList l = new TodoList();
 		boolean isList = false;
-		boolean quit = false;
+		boolean quit = false; //처음에는 false
 		do {
 			Menu.displaymenu();
-			isList = false;
-			String choice = sc.next();
+			isList = false; //isList boolean변
+			String choice = sc.next(); //scanner 사
 			switch (choice) {
 
 			case "add":
-				TodoUtil.createItem(l);
+				TodoUtil.createItem(l); //TodoUtil이라는 class에 간다.
 				break;
 			
 			case "del":
@@ -38,18 +38,25 @@ public class TodoMain {
 
 			case "ls_name_asc":
 				l.sortByName();
-				isList = true;
+				System.out.println("제목 순으로 정렬하였습니다.");
+				isList = true; //정렬을 진행하고 true로 세팅, 정렬하고 한번 보여주
 				break;
 
 			case "ls_name_desc":
 				l.sortByName();
 				l.reverseList();
+				System.out.println("제목 역순으로 정렬하였습니다.");
 				isList = true;
 				break;
 				
 			case "ls_date":
 				l.sortByDate();
+				System.out.println("날짜 순으로 정렬하였습니다.");
 				isList = true;
+				break;
+		
+			case "help": //메뉴를 보여주는 키워드 help case 추가. 
+				Menu.displaymenu();
 				break;
 
 			case "exit":
@@ -61,7 +68,7 @@ public class TodoMain {
 				break;
 			}
 			
-			if(isList) l.listAll();
-		} while (!quit);
+			if(isList) l.listAll(); //true 면 정렬한 목록 보여주기. 
+		} while (!quit); //false 였다가 true 면 프로그램 끝내기, 
 	}
 }
