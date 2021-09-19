@@ -14,8 +14,11 @@ public class TodoMain {
 		TodoList l = new TodoList();
 		boolean isList = false;
 		boolean quit = false; //처음에는 false
+		TodoUtil.loadList(l, "todolist.txt");
+		Menu.displaymenu();
+		
 		do {
-			Menu.displaymenu();
+			Menu.prompt();
 			isList = false; //isList boolean변
 			String choice = sc.next(); //scanner 사
 			switch (choice) {
@@ -70,5 +73,6 @@ public class TodoMain {
 			
 			if(isList) l.listAll(); //true 면 정렬한 목록 보여주기. 
 		} while (!quit); //false 였다가 true 면 프로그램 끝내기, 
+		TodoUtil.saveList(l, "todolist.txt");
 	}
 }

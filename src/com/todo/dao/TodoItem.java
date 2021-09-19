@@ -15,7 +15,6 @@ public class TodoItem {
         this.title=title;
         this.desc=desc;
         SimpleDateFormat f = new SimpleDateFormat("yyy/MM/dd kk:mm:ss");
-   
         this.current_date= f.format(new Date()); //현재시간을 그대로 date 로 넣는다. 자동으로. 
     }
     

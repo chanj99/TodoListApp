@@ -1,6 +1,9 @@
 package com.todo.service;
 
-import java.util.*;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
+import java.util.Scanner;
 
 import com.todo.dao.TodoItem;
 import com.todo.dao.TodoList;
@@ -99,5 +102,29 @@ public class TodoUtil {
 		for (TodoItem item : l.getList()) {
 			System.out.println(item.toString());
 		}
+	}
+
+	public static void saveList(TodoList l, String filename) {
+		// TODO Auto-generated method stub
+
+		try {
+			Writer w = new FileWriter("todolist.txt");
+			for (TodoItem item : l.getList()) {
+				w.write(item.toSaveString());
+			}
+			w.close();
+			
+			System.out.println("성공적으로 파일에 저장했습니다! ");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+	public static void loadList(TodoList l, String filename) {
+		// TODO Auto-generated method stub
+		
+		
 	}
 }
