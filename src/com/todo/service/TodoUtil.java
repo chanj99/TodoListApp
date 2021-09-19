@@ -1,9 +1,14 @@
 package com.todo.service;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 import com.todo.dao.TodoItem;
 import com.todo.dao.TodoList;
@@ -46,7 +51,7 @@ public class TodoUtil {
 	public static void deleteItem(TodoList l) {
 		
 		Scanner sc = new Scanner(System.in);
-		System.out.println("[항복 삭제]\n" + "삭제할 항복의 제목을 입력하세요 > ");
+		System.out.println("[항목 삭제]\n" + "삭제할 항복의 제목을 입력하세요 > ");
 		String title = sc.next();
 		/*
 		 * 제목 일치하면 삭제!제목이 중복되는 것이 없어서 쉽게 삭제 가능. 
@@ -64,7 +69,7 @@ public class TodoUtil {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.println("[항복 수]n" + "수정할 항복의 제목을 입력하세요 > ");
+		System.out.println("[항목 수정]" + "수정할 항목의 제목을 입력하세요 > ");
 		String title = sc.next().trim();
 		if (!l.isDuplicate(title)) {
 			System.out.println("현재 입력하신 제목은 목록에 없는 제목입니다! :(");
@@ -124,7 +129,32 @@ public class TodoUtil {
 
 	public static void loadList(TodoList l, String filename) {
 		// TODO Auto-generated method stub
-		
+		int count = 0;
+		try {
+			BufferedReader br = new BufferedReader(new FileReader("todolist.txt"));
+			String oneline;
+			while((oneline = br.readLine()) != null) {
+				StringTokenizer st = new StringTokenizer(oneline, "##");
+				String title = st.nextToken();
+			    String desc = st.nextToken();
+			    String current_date = st.nextToken();
+			    
+			    TodoItem item = new TodoItem(title, desc, current_date);
+			    l.addItem(item);
+			    count ++;
+			}
+			br.close();
+			System.out.println( count + "개의 항목을 읽었습니다.");
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			System.out.println("불러온 파일 없음.");
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return;
 		
 	}
 }

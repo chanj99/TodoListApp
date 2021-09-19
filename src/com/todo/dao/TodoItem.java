@@ -18,7 +18,14 @@ public class TodoItem {
         this.current_date= f.format(new Date()); //현재시간을 그대로 date 로 넣는다. 자동으로. 
     }
     
-    public String getTitle() {
+    public TodoItem(String title2, String desc2, String current_date2) {
+		// TODO Auto-generated constructor stub
+    	this.title=title2;
+        this.desc=desc2;
+        this.current_date = current_date2;
+	}
+
+	public String getTitle() {
         return title;
     }
 
