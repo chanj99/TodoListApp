@@ -103,7 +103,7 @@ public class TodoUtil {
 	}
 
 	public static void listAll(TodoList l) {
-		System.out.println("[전체 목록]");
+		System.out.println("[전체 목록, 총 "+  l.numberofItem() + " 개]");
 		for (TodoItem item : l.getList()) {
 			System.out.println(item.toString());
 		}

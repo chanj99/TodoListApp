@@ -27,6 +27,12 @@ public class TodoList {
 		list.remove(t);
 	}
 	
+	public int numberofItem() {
+		int num;
+		num = list.size();
+		return num;
+	}
+	
 	/*
 	 * 리스트 수정하는 editItem.
 	 */
