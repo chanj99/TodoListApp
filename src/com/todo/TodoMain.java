@@ -61,7 +61,26 @@ public class TodoMain {
 			case "help": //메뉴를 보여주는 키워드 help case 추가. 
 				Menu.displaymenu();
 				break;
-
+				
+			case "find":
+				TodoUtil.findInList(l);
+				break;
+				
+			case "find_cate":
+				TodoUtil.findCate(l);
+				break;
+				
+			case "ls_date_desc":
+				l.sortByDate();
+				l.reverseList();
+				System.out.println("날짜 역순으로 정렬하였습니다.");
+				isList = true;
+				break;
+				
+			case "ls_cate":
+				TodoUtil.lsCategory(l);
+				break;
+				
 			case "exit":
 				quit = true;
 				break;

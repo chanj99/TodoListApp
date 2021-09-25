@@ -7,6 +7,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -188,4 +190,64 @@ public class TodoUtil {
 		return;
 		
 	}
+	
+	public static void findInList(TodoList l) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		System.out.println("검색할 단어를 입력하세요. > ");
+		String findword = sc.nextLine();
+		
+		//제목에서 키워드 검색 
+		for (TodoItem item2 : l.getList()) {
+			int num = item2.getTitle().indexOf(findword);
+			if(num >= 0) {
+				System.out.print((l.indexOf(item2) + 1) + ". " );
+				System.out.println(item2.toString());
+				continue;
+			}
+		}
+		//내용에서 키워드 검색 
+		for (TodoItem item3 : l.getList()) {
+			int num = item3.getDesc().indexOf(findword);
+			if(num >= 0) {
+				System.out.print((l.indexOf(item3) + 1) + ". " );
+				System.out.println(item3.toString());
+				continue;
+			}
+		}
+	}
+
+	public static void findCate(TodoList l) {
+				Scanner sc = new Scanner(System.in);
+				System.out.println("검색할 단어를 입력하세요. > ");
+				String findword = sc.nextLine();
+
+				//카테고리에서 키워드 검색 
+				for (TodoItem item : l.getList()) {
+					int num = item.getCategory().indexOf(findword);
+					if(num >= 0) {
+						System.out.print((l.indexOf(item) + 1) + ". " );
+						System.out.println(item.toString());
+						continue;
+					}
+				}
+	}
+
+	public static void lsCategory(TodoList l) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		System.out.println("현재 리스트의 카테고리입니다.");
+		List<String> cate = new ArrayList<String>();
+		for (TodoItem item : l.getList()) {
+			cate.add(item.getCategory());
+		}
+		HashSet <String> newcate = new HashSet<String>(cate);
+		int listsize = newcate.size();
+		
+		for(String i : newcate) {
+		System.out.print(i + " /");
+		}
+		
+	}
+	
 }

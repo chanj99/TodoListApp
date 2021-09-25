@@ -88,4 +88,8 @@ public class TodoList {
 		}
 		return false;
 	}
+
+	public TodoItem get(int findnum) {
+		return get(findnum);
+	}
 }

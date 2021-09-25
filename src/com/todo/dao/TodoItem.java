@@ -76,6 +76,10 @@ public class TodoItem {
 		return  "[" + category + "]" + title + " - " + desc + " - " + due_date + " - " +current_date;
 	}
 	
+	public String cateString() {
+		return category;
+	}
+	
 	/*
 	 * file에 저장하기 위한 string 함수 추가 
 	 * */
