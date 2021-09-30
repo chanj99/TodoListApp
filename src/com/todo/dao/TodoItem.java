@@ -12,7 +12,7 @@ public class TodoItem {
     private String category;
     private String due_date;
 
-    //생성자, title, decs 받는다. 
+    //생성자, title, decs 받는다. 다다
     public TodoItem(String category, String title, String desc, String due_date){
     	this.category = category;
         this.title=title;
